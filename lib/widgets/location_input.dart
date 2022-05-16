@@ -13,10 +13,10 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
   Future<void> _getCurrentUserLocation() async {
-    final locData = await Location().getLocation().then((value) {
-      print(value.latitude);
-      print(value.longitude);
-    });
+    final locData = await Location().getLocation();
+
+    print(locData.latitude);
+    print(locData.longitude);
   }
 
   @override
