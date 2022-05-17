@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:advance_app/helper/location_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -14,9 +15,13 @@ class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
   Future<void> _getCurrentUserLocation() async {
     final locData = await Location().getLocation();
-
-    print(locData.latitude);
-    print(locData.longitude);
+    final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(
+      latitude: locData.latitude as double,
+      longitude: locData.longitude as double,
+    );
+    setState(() {
+      _previewImageUrl = staticMapImageUrl;
+    });
   }
 
   @override

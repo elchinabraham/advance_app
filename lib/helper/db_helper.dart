@@ -3,6 +3,7 @@ import 'package:path/path.dart' as path;
 import 'package:sqflite/sqlite_api.dart';
 
 class DBHelper {
+  static const myGoogleApiKey = 'AIzaSyAfnuXRncX7rT1rK1MOi1sEKPqQZ-8ZGa4';
   static Future<Database> database() async {
     final dbPath = await sql.getDatabasesPath();
     return await sql.openDatabase(path.join(dbPath, 'places.db'),
