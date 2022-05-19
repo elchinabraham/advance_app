@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:advance_app/helper/location_helper.dart';
+import 'package:advance_app/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -22,6 +23,23 @@ class _LocationInputState extends State<LocationInput> {
     setState(() {
       _previewImageUrl = staticMapImageUrl;
     });
+  }
+
+  Future<void> _selectOnMap() async {
+    final selectedLocation = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => MapScreen(
+          isSelecting: true,
+        ),
+      ),
+    );
+
+    if (selectedLocation == null) {
+      return;
+    }
+
+    // ...
+    print('Selecting....');
   }
 
   @override
@@ -59,7 +77,7 @@ class _LocationInputState extends State<LocationInput> {
               child: const Text('Current Location'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _selectOnMap,
               child: const Text('Select on map'),
             ),
           ],
