@@ -60,11 +60,9 @@ class _ImageInputState extends State<ImageInput> {
         ),
         const SizedBox(height: 10),
         Expanded(
-          child: FlatButton.icon(
+          child: ElevatedButton(
+            child: const Text('take picture'),
             onPressed: _takePicture,
-            icon: const Icon(Icons.camera),
-            label: const Text('take picture'),
-            textColor: Theme.of(context).primaryColor,
           ),
         ),
       ],
